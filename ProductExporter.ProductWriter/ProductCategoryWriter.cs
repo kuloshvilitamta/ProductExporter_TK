@@ -31,7 +31,7 @@ internal sealed class ProductCategoryWriter : IProductWriter, IDisposable
         _diposeOutputStream = true;
     }
 
-    public bool WriteToTextFile(IEnumerable<Category> categories)
+    public void WriteToTextFile(IEnumerable<Category> categories)
     {
         ObjectDisposedException.ThrowIf(_disposed, this);
 
@@ -44,7 +44,7 @@ internal sealed class ProductCategoryWriter : IProductWriter, IDisposable
             }
         }
 
-        return true;
+        writer.Flush();
     }
 
     public void Dispose(bool disposing)

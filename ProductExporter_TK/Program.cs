@@ -11,7 +11,7 @@ internal class Program
     {
         var reader = ProductCategoryReaderFactory.Create(DataBaseTypes.SqlServer, DBConnector.GetSqlConnection());
         var categories = reader.GetData().ToList();
-        var file=new FileInfo("D:\testing.txt");
+        var file=new FileInfo("D:\\testing.txt");
         var writer = ProductCategoryWriterFactory.Create(FileType.TextFile, file);
 
         writer.WriteToTextFile(categories);

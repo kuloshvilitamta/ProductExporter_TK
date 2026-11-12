@@ -25,6 +25,6 @@ public sealed class Category
 
     public override string ToString()
     {
-        return $"{Name}\t{IsDeleted}";
+        return $"{Name}\t{(IsDeleted ? "1" : "0")}";
     }
 }

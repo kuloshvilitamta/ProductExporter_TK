@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="DataBaseConnector/DataBaseConnector.csproj" />
+  <Project Path="ProductExporter.ProductReader/ProductExporter.ProductReader.csproj" />
+  <Project Path="ProductExporter.ProductWriter/ProductExporter.ProductWriter.csproj" />
+  <Project Path="ProductExporter.Shared/ProductExporter.Shared.csproj" />
+  <Project Path="ProductExporter_TK/ProductExporter_TK.csproj" />
+</Solution>

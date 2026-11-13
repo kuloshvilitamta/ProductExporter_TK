@@ -5,14 +5,13 @@ namespace ProductExporter.ProductWriter;
 
 internal sealed class ProductCategoryWriter : IProductWriter, IDisposable
 {
-
     private readonly Stream _outputStream;
     private bool _disposed;
     private readonly bool _diposeOutputStream;
 
     public ProductCategoryWriter(Stream outputStream)
     {
-        ArgumentNullException.ThrowIfNullOrEmpty(nameof(outputStream));
+        ArgumentNullException.ThrowIfNull(outputStream, nameof(outputStream));
 
         _outputStream = outputStream;
 
@@ -24,8 +23,14 @@ internal sealed class ProductCategoryWriter : IProductWriter, IDisposable
 
     public ProductCategoryWriter(FileInfo outputFile)
     {
-        ArgumentNullException.ThrowIfNullOrEmpty(nameof(outputFile));
+        ArgumentNullException.ThrowIfNull(outputFile, nameof(outputFile));
 
+        if (!outputFile.Exists)
+        {
+            string path = outputFile.FullName!;
+            string newPath = Path.Combine(path, "Exported.txt");
+            outputFile = new FileInfo(newPath);
+        }
         _outputStream = outputFile.OpenWrite();
 
         _diposeOutputStream = true;
@@ -40,11 +45,9 @@ internal sealed class ProductCategoryWriter : IProductWriter, IDisposable
         {
             foreach (var products in category.Products)
             {
-                writer.Write(category.ToString(), products.ToString());
+                writer.WriteLine($"{category}\t{products}");
             }
         }
-
-        writer.Flush();
     }
 
     public void Dispose(bool disposing)
@@ -59,7 +62,6 @@ internal sealed class ProductCategoryWriter : IProductWriter, IDisposable
                 _outputStream.Dispose();
             }
         }
-
         _disposed = true;
     }
 

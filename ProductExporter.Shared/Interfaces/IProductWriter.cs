@@ -7,5 +7,5 @@ namespace ProductExporter.Shared.Interfaces;
 
 public interface IProductWriter
 {
-    bool WriteToTextFile(IEnumerable<Category> categories);
+    void WriteToTextFile(IEnumerable<Category> categories);
 }

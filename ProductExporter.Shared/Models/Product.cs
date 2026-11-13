@@ -27,6 +27,6 @@ public sealed class Product
 
     public override string ToString()
     {
-        return $"{Code}\t{Name}\t{Price}\t{Quantity}\t{(IsDeleted ? "1" : "0")}\t{CategoryName}";
+        return $"{CategoryName}\t{Code}\t{Name}\t{Price:F2}\t{Quantity}\t{Convert.ToByte(IsDeleted)}";
     }
 }

@@ -54,7 +54,6 @@ namespace ProductExporter.ProductReader
                 }
 
                 return categories.Values;
-
             }
             finally
             {
